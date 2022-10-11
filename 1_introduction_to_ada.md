@@ -1687,7 +1687,7 @@ begin
 end;
 ```
 
-## Final words
+## Pointers - final words
 
 - Accessibility level is broken, but was meant to solve the same problems as
   linear types in Rust.
@@ -1696,3 +1696,25 @@ end;
   necessary.
 
 - Special conveniences for unchecked conversions and stuff like that.
+
+# Safety in Ada
+
+## Safety in Ada
+
+* The language is safe by default
+
+* No "unsafe" subset, but rather unsafe operations (`Unchecked_Deallocation`,
+  `Unchecked_Conversion`, ...)
+
+* Safe means:
+    - Very little undefined behavior. Most of Ada's behavior is defined (check
+      the Ada reference manual if you don't believe me
+      https://ada-lang.io/docs/arm)
+    - No memory corruption
+    - Illegal operations will result in a runtime exception
+
+* But it also means:
+    - Make it easy to write readable, maintainable programs
+    - Make it easy to **specify** as much about the program as you can.
+    - The behavior cannot always be verified at compile time, but it will be
+      verified at runtime/can be verified by static-analyzers/provers.

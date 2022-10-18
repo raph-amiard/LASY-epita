@@ -1,4 +1,4 @@
-% LASY - Langages systèmes
+% Langages systèmes 1 - Introduction to Ada
 % Raphael Amiard - Adacore
 % amiard@adacore.com
 

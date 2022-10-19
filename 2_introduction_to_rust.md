@@ -343,7 +343,7 @@ fn main() {
 ## Array type
 
 * Homogeneous array type
-* Index type is i32
+* Index type is usize
 * Bounds checked
 * Very simple (dare I say primitive). No variable length arrays at all.
 * 90% of the time one will use vectors

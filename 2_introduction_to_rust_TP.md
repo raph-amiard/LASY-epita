@@ -11,7 +11,7 @@ Exercises
 Write the body of the following `invert` function:
 
 ```rust
-fun invert(s: &String) -> String {
+fn invert(s: &String) -> String {
 }
 ```
 
@@ -23,8 +23,8 @@ Write a main function with tests
 
 Write the same function but inverting the string in place
 
-```ada
-fun invert(s: &mut String) {
+```rust
+fn invert(s: &mut String) {
 }
 ```
 

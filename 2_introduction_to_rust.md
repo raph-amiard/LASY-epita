@@ -805,11 +805,17 @@ enum Expr {
 }
 
 fn main() {
-    let e = Expr::BinOp {l: Box::new(Expr::BinOp {l: Box::new(Expr::Literal(12)),
-                                                  op: Operator::Plus,
-                                                  r: Box::new(Expr::Literal(15))}),
-                         op: Operator::Plus,
-                         r: Box::new(Expr::Literal(12))};
+    let e =
+        Expr::BinOp {
+            l: Box::new(
+                Expr::BinOp {
+                    l: Box::new(Expr::Literal(12)),
+                    op: Operator::Plus,
+                    r: Box::new(Expr::Literal(15))
+                }),
+            op: Operator::Plus,
+            r: Box::new(Expr::Literal(12))
+        };
 
     println!("{:?}", e);
 }

@@ -796,7 +796,11 @@ enum Operator {
 
 #[derive(Debug)]
 enum Expr {
-    BinOp { l: Box<Expr>, op: Operator, r: Box<Expr> },
+    BinOp {
+        l: Box<Expr>,
+        op: Operator,
+        r: Box<Expr>
+    },
     Literal(i32)
 }
 

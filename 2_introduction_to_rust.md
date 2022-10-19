@@ -161,6 +161,7 @@ fn main() {
 ```rust
 fn main() {
     let mut i = 1;
+
     loop {
         match i {
             5 | 12 => break,
@@ -168,6 +169,7 @@ fn main() {
             7 | 9 => break,
             _ => println!("Hello, World!")
         }
+
         i += 1;
     }
 }
@@ -204,6 +206,7 @@ fn main() {
     let a = for n in 1..11 {
         println!("Pouet");
     };
+
     let b: u32 = a;
 }
 ```
@@ -213,10 +216,12 @@ fn main() {
 ```rust
 fn main() {
     let mut i = 1;
+
     let a = loop {
         println!("Pouet");
 
         if i > 12 { break; }
+
         i +=1;
     };
 
@@ -235,6 +240,7 @@ fn main() {
             if i == 5 || i == 12 { "5 or 12" }
             else { "everything else" }
         );
+
         i += 1;
     };
 }
@@ -245,12 +251,14 @@ fn main() {
 ```rust
 fn main() {
     let mut i = 1;
+
     loop {
         println!(
             "{}",
             if i == 5 || i == 12 { "5 or 12" }
             else if i == 15 { "15" }
         );
+
         i += 1;
     };
 }
@@ -264,6 +272,7 @@ fn main() {
 
     while i {
         i -= 1;
+
         println!("{}", i);
     }
 
@@ -275,6 +284,7 @@ fn main() {
 ```rust
 fn main() {
     let mut i = 1;
+
     loop {
         match i {
             1..=5  => println!("i in 1..4"),
@@ -282,6 +292,7 @@ fn main() {
             5 | 12 => break,
             7 | 9 => break,
         }
+
         i += 1;
     }
 }

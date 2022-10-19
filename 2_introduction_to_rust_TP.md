@@ -76,7 +76,7 @@ enum Operator {
 #[derive(Debug)]
 enum Expr {
     BinOp { l: Box<Expr>, op: Operator, r: Box<Expr> },
-    IfExpr { cond: Box<Expr>, true_branch: Box<Expr>, false_branch: Box<Expr> }
+    IfExpr { cond: Box<Expr>, true_branch: Box<Expr>, false_branch: Box<Expr> },
     Literal(i32)
 }
 ```

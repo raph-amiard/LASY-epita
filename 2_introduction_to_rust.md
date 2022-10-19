@@ -158,7 +158,7 @@ fn main() {
 
 ## Match expression
 
-```ada
+```rust
 fn main() {
     let mut i = 1;
     loop {

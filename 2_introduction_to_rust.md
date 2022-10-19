@@ -287,7 +287,7 @@ fn main() {
 
     loop {
         match i {
-            1..=5  => println!("i in 1..4"),
+            1..=5  => println!("i in 1..=5"),
         //  ^ This is a PATTERN
             5 | 12 => break,
             7 | 9 => break,

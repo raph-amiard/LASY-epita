@@ -612,9 +612,11 @@ fn main() {
 ```rust
 fn factorial(n: i64) -> i64 {
     let mut ret = n;
+
     for i in 1..n {
         ret = ret * n;
     }
+
     ret;
 }
 ```
@@ -775,6 +777,7 @@ enum Color {
 
 fn main() {
     let y = Color::Yellow;
+
     match y {
         Color::Yellow => println!("yellow!"),
         Color::Red => println!("red!");

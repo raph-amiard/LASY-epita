@@ -181,7 +181,7 @@ fn main() {
 fn main() {
     let a = loop {
         println!("Pouet");
-    }
+    };
 
     let b: u32 = a;
 }
@@ -193,7 +193,7 @@ fn main() {
 fn main() {
     let a = for n in 1..11 {
         println!("Pouet");
-    }
+    };
 }
 ```
 
@@ -203,7 +203,7 @@ fn main() {
 fn main() {
     let a = for n in 1..11 {
         println!("Pouet");
-    }
+    };
     let b: u32 = a;
 }
 ```
@@ -218,7 +218,7 @@ fn main() {
 
         if i > 12 { break; }
         i +=1;
-    }
+    };
 
     let b: u32 = a;
 }

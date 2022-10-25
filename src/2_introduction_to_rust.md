@@ -786,7 +786,7 @@ fn main() {
 }
 ```
 
-## Complex enums
+## Complex enums (1/2)
 
 ```rust
 #[derive(Debug)]
@@ -803,7 +803,11 @@ enum Expr {
     },
     Literal(i32)
 }
+```
 
+## Complex enums (2/2)
+
+```rust
 fn main() {
     let e =
         Expr::BinOp {

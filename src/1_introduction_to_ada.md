@@ -1697,6 +1697,54 @@ end;
 
 - Special conveniences for unchecked conversions and stuff like that.
 
+# More about records
+
+## More about records
+
+```ada
+Max_Len : constant Natural := Compute_Max_Len;
+--                            ^ Not known at compile time
+
+type Person is record
+   First_Name : String (1 .. Max_Len);
+   Last_Name  : String (1 .. Max_Len);
+end record;
+```
+
+## Records with discriminant
+
+```ada
+type Person (Max_Len : Natural) is record
+--           ^ Discriminant. Cannot be modified once initialized.
+   First_Name : String (1 .. Max_Len);
+   Last_Name  : String (1 .. Max_Len);
+end record;
+--  Person is an indefinite type (like an array)
+```
+
+## Records with variant
+
+```ada
+type Node_Acc is access Node;
+
+type Op_Kind is (Bin_Op, Un_Op);
+--  A regular enum
+
+type Node (Op : Op_Kind) is record
+--         ^ The discriminant is an enum
+   Id : Natural;
+   case Op is
+      when Un_Op =>
+         Operand : Node_Acc;
+      when Bin_Op =>
+         Left, Right : Node_Acc;
+      --  Those fields only exist when Op is Bin_Op
+   end case;
+   --  Variant part. Only one, at the end of the record
+   --  definition
+end record;
+```
+
 # Safety in Ada
 
 ## Safety in Ada

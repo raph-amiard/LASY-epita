@@ -7,11 +7,9 @@ Given the following package definition:
 
 ```ada
 package Expr_Eval is
-    type Expr is private;
 
-    function Eval (E: Expr) return Integer;
+    type Expr;
 
-private
     type Expr_Kind is (Bin_Op, Literal, If_Expr);
     type Op_Kind is (Add, Sub, Mul, Div, Logic_And, Logic_Or);
     type Expr_Access is access Expr;
@@ -28,10 +26,27 @@ private
       end case;
     end record;
 
+    function Eval (E: Expr) return Integer;
+
 end Expr_Eval;
 ```
 
 Complete it with a body.
+
+Here is a test (write more than this one).
+
+```ada
+with Expr_Eval; use Expr_Eval;
+
+procedure Test is
+    E : Expr := (Kind => Bin_Op,
+                 L => new Expr'(Kind => Literal, Val => 12),
+                 R => new Expr'(Kind => Literal, Val => 15),
+                 Op => Add)
+begin
+    Put_Line (Eval (E)'Image);
+end Test;
+```
 
 
 ### Exercise 2
@@ -43,6 +58,34 @@ Transform exercise one to use ``Indefinite_Holders`` instead of an access type.
 
 Transform exercise two to use a tagged type hierarchy instead of a
 discriminated record.
+
+```ada
+package Expr_Eval is
+
+    type Op_Kind is (Add, Sub, Mul, Div, Logic_And, Logic_Or);
+    type Expr_Access is access Expr;
+
+    type Expr is tagged null record;
+
+    type Bin_Op is new Expr with record
+    end record;
+
+    type If_Expr is new Expr with record
+    end record;
+
+    type Literal is new Expr with record
+    end record;
+
+    function Eval (E: Expr) return Integer is abstract;
+
+    overriding function Eval (B : Bin_Op) return Integer;
+
+    ...
+
+    --  Add all the overrides of for derived classes
+
+end Expr_Eval;
+```
 
 ### Exercise 4
 

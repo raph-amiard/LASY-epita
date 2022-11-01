@@ -247,6 +247,24 @@ fn main() {
 }
 ```
 
+## Dyn trait objects
+
+* You can store any object implementing a trait via the `dyn` qualifier,
+  creating a trait object
+
+```rust
+use std::fmt::Debug;
+
+fn main() {
+    let a: Vec<Box<dyn Debug>> = vec![
+        Box::new(12),
+        Box::new("pouet"),
+        Box::new((1, 2))
+    ];
+    println!("{:?}", a);
+}
+```
+
 ## Lifetimes
 
 Ownership is a combination of three things:
@@ -705,5 +723,57 @@ fn main() -> Result<(), ParseIntError> {
     };
 
     Ok(())
+}
+```
+
+# Smart pointer types
+
+## Box
+
+Box is a simple reference. Used when you want to *store* a reference, rather
+than just *borrow* it (see the expression evaluator exercise).
+
+```rust
+
+fn main() {
+    let b = Box::new(5);
+    println!("b = {}", b);
+}
+```
+
+## Box (2)
+
+* You cannot have multiple references to a box!!
+
+```rust
+enum List {
+    Cons(i32, Box<List>),
+    Nil,
+}
+
+use crate::List::{Cons, Nil};
+
+fn main() {
+    let a = Cons(5, Box::new(Cons(10, Box::new(Nil))));
+    let b = Cons(3, Box::new(a));
+    let c = Cons(4, Box::new(a));
+}
+```
+
+## Rc
+
+```rust
+enum List {
+    Cons(i32, Rc<List>),
+    Nil,
+}
+
+use crate::List::{Cons, Nil};
+use std::rc::Rc;
+
+fn main() {
+    let a = Rc::new(Cons(5, Rc::new(Cons(10, Rc::new(Nil)))));
+    let b = Cons(3, Rc::clone(&a));
+    let c = Cons(4, Rc::clone(&a));
 }
 ```

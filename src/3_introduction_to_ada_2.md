@@ -467,7 +467,7 @@ package P is
 
    type Derived is new My_Class with null record;
 
-   overriding procedure Foo (Self : My_Class);
+   overriding procedure Foo (Self : Derived);
    --  overriding qualifier is optional, but if it is here,
    --  it must be valid.
 end P;

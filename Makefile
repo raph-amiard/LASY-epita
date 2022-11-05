@@ -1,4 +1,12 @@
-all: PDFs/1_introduction_to_ada.pdf PDFs/1_introduction_to_ada_TP.pdf PDFs/2_introduction_to_rust.pdf PDFs/2_introduction_to_rust_TP.pdf PDFs/3_introduction_to_ada_2.pdf PDFs/3_introduction_to_ada_2_TP.pdf PDFs/4_introduction_to_rust_2.pdf PDFs/4_introduction_to_rust_2_TP.pdf
+.PHONY: all setup pdf
+all: setup
+	docker run -v /etc/passwd:/etc/passwd -u `id -u`:`id -g` -v `pwd`:`pwd` -w `pwd` lasy
+
+setup:
+	mkdir -p PDFs
+	docker build . -t lasy
+
+pdf: PDFs/1_introduction_to_ada.pdf PDFs/1_introduction_to_ada_TP.pdf PDFs/2_introduction_to_rust.pdf PDFs/2_introduction_to_rust_TP.pdf PDFs/3_introduction_to_ada_2.pdf PDFs/3_introduction_to_ada_2_TP.pdf PDFs/4_introduction_to_rust_2.pdf PDFs/4_introduction_to_rust_2_TP.pdf
 
 PDFs/1_introduction_to_ada.pdf: src/1_introduction_to_ada.md
 	pandoc -t beamer --pdf-engine=xelatex --template=./default.beamer --highlight-style=zenburn -s -V theme=metropolis -V fontsize=9pt -V monofont="DejaVu Sans Mono" -V monofontoptions=Scale=0.9 src/1_introduction_to_ada.md -o PDFs/1_introduction_to_ada.pdf

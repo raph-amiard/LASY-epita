@@ -1,4 +1,4 @@
-% Introduction to Ada - Part 2
+% Langages systèmes 3 - Introduction to Ada 2
 % Raphael Amiard - Adacore
 % amiard@adacore.com
 

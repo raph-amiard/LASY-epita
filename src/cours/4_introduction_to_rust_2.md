@@ -1,4 +1,4 @@
-% Langages systèmes 2 - Introduction to Rust
+% Langages systèmes 4 - Introduction to Rust 2
 % Raphael Amiard - Adacore
 % amiard@adacore.com
 

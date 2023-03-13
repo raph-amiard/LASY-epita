@@ -335,7 +335,7 @@ fn main() {
     let (x, y) = tp;
     //  ^ This is an irrefutable pattern
 
-    let f = tp.1;
+    let f = tp.0;
     // Access first value of tuple
 }
 ```
@@ -393,10 +393,10 @@ fn main() {
     let a = [1, 2, 3, 4, 5, 6, 7];
     let mut v = vec![1, 2, 3, 4, 5, 6, 7];
 
-    let b = &a[1 .. 3];
+    let b = &a[1..=3];
     //      ^ Reference to a view of items 1 to 3 of the array a
 
-    let c = &v[3 .. 5];
+    let c = &v[3..=5];
     //       ^ Reference to a view of items 3 to 5 of the vec v
 
     println!("{:?}", c);
@@ -468,7 +468,7 @@ fn main() {
 
 ```rust
 fn main() {
-    let n: int = 5;
+    let n: usize = 5;
     let i: [i32; n] = [1, 2, 3, 4, 5];
 }
 ```
@@ -582,7 +582,7 @@ fn main() {
     let v: Vec<i32> = vec![1, 2, 3, 4];
     println!("{:?}", double(&v));
 
-    println!("{:?}", v); // :(
+    println!("{:?}", v);
 }
 ```
 
@@ -634,7 +634,7 @@ fn main() {
     let v: Vec<i32> = vec![1, 2, 3, 4];
     double(&v);
 
-    println!("{:?}", v); // :(
+    println!("{:?}", v);
 }
 ```
 
@@ -651,7 +651,7 @@ fn main() {
     let mut v: Vec<i32> = vec![1, 2, 3, 4];
     double(&v);
 
-    println!("{:?}", v); // :(
+    println!("{:?}", v);
 }
 ```
 
@@ -673,7 +673,7 @@ fn main() {
     let v3 = &mut v;
     double(v3);
 
-    println!("{:?}", v); // :(
+    println!("{:?}", v);
 }
 ```
 
@@ -695,7 +695,7 @@ fn main() {
     let v3 = &mut v;
     double(v3);
 
-    println!("{:?}", v2); // :(
+    println!("{:?}", v2);
 }
 ```
 

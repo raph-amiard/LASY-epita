@@ -159,7 +159,7 @@ struct LinkedList<T> {
 struct HashTable<T> { ... }
 
 impl HashTable<T> {
-    fn add(&self, item: T) {
+    fn add(&mut self, item: T) {
         // problem: how do we hash elements?
     }
 }
@@ -180,7 +180,7 @@ struct HashTable<T: Hashable> { }
 //                  ^ Trait bound
 
 impl HashTable<T> {
-    fn add(&self, item: T) {
+    fn add(&mut self, item: T) {
         ...
         let hash = item.hash();
         ...
@@ -233,13 +233,13 @@ struct Point {
   (like you have by default on scalar types).
 
 ```rust
-#[derive(Copy, Debug)]
+#[derive(Clone, Copy, Debug)]
 struct Point {
     x: i32, y: i32
 }
 
 fn main() {
-    let p = Point { x = 1, y = 2 };
+    let p = Point { x: 1, y: 2 };
     let p2 = p;
 
     println!("{:?}", p);
@@ -270,7 +270,7 @@ fn main() {
 Ownership is a combination of three things:
 
 * Basic rules of ownership (one owner, N borrowers, etc)
-* Lifetimes for every value. For the moment, all lifetimes were infered.
+* Lifetimes for every value. For the moment, all lifetimes were inferred.
 * The borrow checker: checks that borrows don't outlive the lifetime of the
   value they borrow
 
@@ -579,7 +579,7 @@ fn main() {
 fn main() {
     let mut y = 12;
     let adder = |x| x + y;
-    y = 15
+    y = 15;
     println!("{}", adder(12));
 }
 ```

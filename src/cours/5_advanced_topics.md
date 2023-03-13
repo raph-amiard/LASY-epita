@@ -109,7 +109,7 @@ pragma Restrictions (No_Abort_Statements,
 ## Ravenscar: Tasking
 
 * All tasks are library level
-* All tasks are terminating
+* None of the tasks is terminating
 * Fixed number of tasks
 * Deterministic scheduling and locking policies (no preemption, monotonic
   scheduling, ...)
@@ -243,7 +243,7 @@ with System; use System;
 package P is
    V : Integer;
    with Alignment => 1;
-   --                ^ Address must be a multiple of this.   
+   --                ^ Address must be a multiple of this.
    --                  So compiler can over align.
 end P;
 ```
@@ -254,7 +254,7 @@ end P;
 procedure BV is
    type Bit_Vector is array (0 .. 31) of Boolean;
    pragma Pack (Bit_Vector);
-   
+
    B : Bit_Vector;
 begin
    Put_Line (Integer'Image (B'Size));
@@ -473,7 +473,8 @@ macro_rules! ok_or_return {
 
 fn main() -> Result<(), &'static str> {
     let mut line = String::new();
-    ok_or_return!(std::io::stdin().read_line(&mut line), "Cannot read line"); // including '\n'
+    ok_or_return!(std::io::stdin().read_line(&mut line), // including '\n'
+                  "Cannot read line");
     let a = ok_or_return!(line.trim().parse::<i32>(), "Cannot parse string");
     Ok(())
 }
@@ -523,11 +524,11 @@ int main(void)
 
 ## Hygiene and Rust
 
-```
+```rust
 macro_rules! using_a {
     ($e:expr) => {
         {
-            let a = 42; 
+            let a = 42;
             $e
         }
     }

@@ -28,7 +28,7 @@ end Invert;
 
 `Invert` shall return the inverted string, with the same bounds as `S`.
 
-You can put this function inside a main procedure that will serve as a test procedure:
+Put this function inside a main procedure that will serve as a test procedure:
 
 ```ada
 --  test_invert.adb
@@ -56,8 +56,7 @@ begin
    ...
 end Invert;
 ```
-
-Write associated tests.
+Put it in a test main procedure. Write associated tests.
 
 ### Exercise 2 [arrays]
 
@@ -65,12 +64,13 @@ Write a function that converts an `Integer` into a `String`, without using the
 `'Image` attribute. Start by handling positive integers, then transition to all
 integers.
 
-Write associated tests.
+Put it in a test main procedure. Write associated tests.
 
 ### Exercise 3 [arrays]
 
-Write a function that converts a `String` into an `Integer`, with associated
-tests.
+Write a function that converts a `String` into an `Integer`.
+
+Put it in a test main procedure. Write associated tests.
 
 ### BONUS Exercise 4 [arrays]
 

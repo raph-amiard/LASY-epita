@@ -79,18 +79,6 @@ Write a function that converts an `Integer` into a `String` using
 
 Write the inverse function.
 
-### Exercise 5 [aggregates]
-
-Write a program that shows a rectangle triangle with `*` of size `N*N`, using
-array aggregates. For example, for `N=4`:
-
-```
-   *
-  **
- ***
-****
-```
-
 ### Exercise 6 [packages]
 
 Write a package (spec and body) that implements a singleton `Integer` stack (no

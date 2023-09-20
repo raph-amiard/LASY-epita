@@ -56,27 +56,28 @@ hierarchy instead of a discriminated record. Here is the spec for `Expr_Eval`:
 ```ada
 package Expr_Eval is
 
+    type Expr;
+
     type Op_Kind is (Add, Sub, Mul, Div, Logic_And, Logic_Or);
     type Expr_Access is access Expr;
 
-    type Expr is tagged null record;
-
-    type Bin_Op is new Expr with record
-    end record;
-
-    type If_Expr is new Expr with record
-    end record;
-
-    type Literal is new Expr with record
-    end record;
-
+    type Expr is abstract tagged null record;
     function Eval (E: Expr) return Integer is abstract;
 
+    type Bin_Op is new Expr with record
+
+    end record;
     overriding function Eval (B : Bin_Op) return Integer;
 
-    ...
+    type If_Expr is new Expr with record
 
-    --  Add all the overrides of for derived classes
+    end record;
+    overriding function Eval (I : If_Expr) return Integer;
+
+    type Literal is new Expr with record
+
+    end record;
+    overriding function Eval (L : Literal) return Integer;
 
 end Expr_Eval;
 ```

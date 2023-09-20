@@ -103,6 +103,8 @@ Extend your prefered version to handle two more expression kinds:
 - `Ref`. Ref allows referencing a name, introduced by a let, and the result
   of the evaluation will be the value of the binding.
 
+You can assume that the same variable name cannot be used twice (you can just raise an exception or even not handle this case).
+
 ```ada
     subtype Var_Name is String (1 .. 2);
     type Let is new Expr with record

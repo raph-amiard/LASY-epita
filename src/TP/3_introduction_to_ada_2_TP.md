@@ -100,6 +100,15 @@ Extend your prefered version to handle two more expression kinds:
 
 Write new tests in the test main for those two new constructs.
 
+Here is an example of initialization of the tagged record tree (change the
+field names accordingly):
+
+```ada
+   E : Expr_Access := new Bin_Op'
+     (K => Add, L => new Literal'(Val => 12), R => new Literal'(Val => 15));
+```
+
+
 ### Exercise 4 [BONUS]
 
 Create an alire project named `ex4`. 

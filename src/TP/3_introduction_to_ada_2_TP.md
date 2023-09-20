@@ -126,7 +126,17 @@ Extend your prefered version to handle two more expression kinds:
 > You can use https://learn.adacore.com/courses/intro-to-ada/chapters/standard_library_containers.html#hashed-maps as an example of how to use hash maps
 > 
 
-Write new tests in the test main for those two new constructs.
+Write new tests in the test main for those two new constructs. Here is an
+example of a Let according to the above data representation:
+
+```ada
+   E2 : Expr_Access :=
+      new Let'
+        ("Ab", new Literal'(Val => 12),
+         new Bin_Op'(K => Add,
+                     L => new Literal'(Val => 12),
+                     R => new Ref'(Ref => "Ab")));
+```
 
 
 ### Exercise 4 [BONUS]

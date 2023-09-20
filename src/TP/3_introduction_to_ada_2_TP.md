@@ -103,10 +103,16 @@ Extend your prefered version to handle two more expression kinds:
 - `Ref`. Ref allows referencing a name, introduced by a let, and the result
   of the evaluation will be the value of the binding.
 
+> [!IMPORTANT]
+>
 > To represent the scopes, you can use either an array, or a hash map. Hash
 > maps are in `Ada.Containers.Hashed_Maps`
+>
+> You can use https://learn.adacore.com/courses/intro-to-ada/chapters/standard_library_containers.html#hashed-maps as an example of how to use hash maps
+> 
 
 Write new tests in the test main for those two new constructs.
+
 
 ### Exercise 4 [BONUS]
 

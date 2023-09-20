@@ -103,6 +103,21 @@ Extend your prefered version to handle two more expression kinds:
 - `Ref`. Ref allows referencing a name, introduced by a let, and the result
   of the evaluation will be the value of the binding.
 
+```ada
+    subtype Var_Name is String (1 .. 2);
+    type Let is new Expr with record
+       Bind        : Var_Name;
+       Bound_Value : Expr_Access;
+       Target_Expr : Expr_Access;
+    end record;
+    overriding function Eval (L : Let) return Integer;
+
+    type Ref is new Expr with record
+       Ref : Var_Name;
+    end record;
+    overriding function Eval (R : Ref) return Integer;
+```
+
 > [!IMPORTANT]
 >
 > To represent the scopes, you can use either an array, or a hash map. Hash

@@ -59,7 +59,7 @@ package Expr_Eval is
     type Expr;
 
     type Op_Kind is (Add, Sub, Mul, Div, Logic_And, Logic_Or);
-    type Expr_Access is access Expr;
+    type Expr_Access is access Expr'Class;
 
     type Expr is abstract tagged null record;
     function Eval (E: Expr) return Integer is abstract;

@@ -20,6 +20,7 @@ Exercises
 Create a generic `SortedList` type, where elements are sorted on insertion:
 
 ```rust
+#[derive(Debug)]
 struct SortedList<...> {
     ...
 }

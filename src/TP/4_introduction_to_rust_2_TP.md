@@ -69,7 +69,7 @@ names to values
 
 ```rust
 fn eval(expr: Expr) -> ExprResult {
-    let mut vars = HashMap::<String, i32>::new();
+    let mut vars = HashMap::<String, ExprResult>::new();
 
     eval_impl(expr, &mut vars) // Implement eval_impl
 }

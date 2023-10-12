@@ -52,7 +52,7 @@ You need to declare a new enum type for values, and eval needs to return this
 enum type.
 
 ```rust
-#[derive(Debug, Eq)]
+#[derive(Debug, Eq, Clone)]
 enum ExprResult {
     Bool(bool),
     Int(i32),

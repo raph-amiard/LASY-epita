@@ -131,7 +131,7 @@ fn main() {
 fn main() {
     let mut i = 1;
     loop {
-        if i == 5 || else i == 12 {
+        if i == 5 || i == 12 {
             break;
         } else if i < 5 && i > 2 {
             println!("I = 3 or 4");

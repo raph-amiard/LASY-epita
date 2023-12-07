@@ -18,16 +18,28 @@ is able to read and display an ELF header.
 
 # Exercise 2 (Rust)
 
-Make a variadic macro that evaluates and print every expression it is passed as
-an argument.
+Make a variadic macro that:
+* Prints the *source* of every expression it is passed as an argument
+* Prints the evaluation of the expression
 
-# Exercise 3 (Rust)
+Such as :
 
-Enhance the `ok_or_return` macro to evaluate each expression in order.
+```rust
+    print_and_execute!(3, 34, "hello", {let x = 34;  x});
+```
 
-# Exercise 4 (Rust) - BONUS
+prints
+
+```
+3 evals to 3
+34 evals to 34
+"hello" evals to hello
+{let x = 34; x} evals to 34
+```
+
+# Exercise 3 (Rust) - BONUS
 
 Using [this
 pattern](https://veykril.github.io/tlborm/decl-macros/patterns/tt-muncher.html),
-create a macro that takes s-expressions as an input, and outputs an expression
+create a macro that takes an expression as an input, and outputs an expression
 for your expression evaluator from the previous class.

@@ -127,17 +127,6 @@ package P is
 end P;
 ```
 
-
-## Querying alignment
-
-```ada
-package P is
-   V : Integer;
-   V_Alignment : Integer := V'Alignment;
-   --                       ^ Alignment of V
-end P;
-```
-
 ## Querying size
 
 ```ada
@@ -152,20 +141,6 @@ package P is
    --                    ^ Minimum size for a Natural, in
    --                      bits (== 31)
 
-end P;
-```
-
-## Querying size
-
-```ada
-package P is
-   Instance_Size : Integer := V'Size;
-   --                         ^ Actual size, in bits
-
-   Typ_Size : Integer := Integer'Max_Size_In_Storage_Elements;
-   --                    ^ Max size, in storage elements,
-   --                      used to store an Int
-   --                      (storage element -> byte)
 end P;
 ```
 
@@ -235,26 +210,13 @@ package P is
 end P;
 ```
 
-## Specifying alignment
-
-```ada
-with System; use System;
-
-package P is
-   V : Integer;
-   with Alignment => 1;
-   --                ^ Address must be a multiple of this.   
-   --                  So compiler can over align.
-end P;
-```
-
 ## Packing arrays
 
 ```ada
 procedure BV is
    type Bit_Vector is array (0 .. 31) of Boolean;
    pragma Pack (Bit_Vector);
-   
+
    B : Bit_Vector;
 begin
    Put_Line (Integer'Image (B'Size));
@@ -279,27 +241,47 @@ begin
 end Packed_Rec;
 ```
 
-## Specifying record layout
+## Packed arrays: flags
 
 ```ada
-type Register is range 0 .. 15;
-   with Size => 4;
---  Size on type only affects components
+type State         is (A,M,W,P);
+type Mode          is (Fix, Dec, Exp, Signif);
 
-type Opcode is (Load, Inc, Dec, ..., Mov);
-   with Size => 8;
+type Byte_Mask     is array (0..7)  of Boolean;
+type State_Mask    is array (State) of Boolean;
+type Mode_Mask     is array (Mode)  of Boolean;
+```
 
-type RR_370_Instruction is record
-   Code : Opcode;
-   R1   : Register;
-   R2   : Register;
+## Specifying record layout (2)
+
+```ada
+type Program_Status_Word is
+  record
+      System_Mask        : Byte_Mask;
+      Protection_Key     : Integer range 0 .. 3;
+      Machine_State      : State_Mask;
+      Interrupt_Cause    : Interruption_Code;
+      Ilc                : Integer range 0 .. 3;
+      Cc                 : Integer range 0 .. 3;
+      Program_Mask       : Mode_Mask;
+      Inst_Address       : Address;
 end record;
+```
 
-for RR_370_Instruction use record
-   Code at 0 range 0 .. 7;
-   R1 at 1 range 0 .. 3;
-   R2 at 1 range 4 .. 7;
-end record;
+## Specifying record layout (2)
+
+```ada
+for Program_Status_Word use
+  record
+      System_Mask      at 0 range 0  .. 7;
+      Protection_Key   at 0 range 10 .. 11; -- bits 8,9 unused
+      Machine_State    at 0 range 12 .. 15;
+      Interrupt_Cause  at 0 range 16 .. 31;
+      Ilc              at 4 range 0  .. 1;  -- second word
+      Cc               at 4 range 2  .. 3;
+      Program_Mask     at 4 range 4  .. 7;
+      Inst_Address     at 4 range 8  .. 31;
+  end record;
 ```
 
 ## Specifying how enums are mapped to numbers
@@ -523,7 +505,7 @@ int main(void)
 
 ## Hygiene and Rust
 
-```
+```rust
 macro_rules! using_a {
     ($e:expr) => {
         {

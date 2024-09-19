@@ -1699,18 +1699,6 @@ end;
 
 # More about records
 
-## More about records
-
-```ada
-Max_Len : constant Natural := Compute_Max_Len;
---                            ^ Not known at compile time
-
-type Person is record
-   First_Name : String (1 .. Max_Len);
-   Last_Name  : String (1 .. Max_Len);
-end record;
-```
-
 ## Records with discriminant
 
 ```ada

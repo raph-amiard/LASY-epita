@@ -6,8 +6,8 @@ Exercises
 * Get started following the guide here: https://www.rust-lang.org/
 * Follow tutorial here: https://doc.rust-lang.org/cargo/
 
-> [!IMPORTANT]  
-> 
+> [!IMPORTANT]
+>
 > PLEASE FOLLOW THE FOLLOWING RULES CAREFULLY. They're needed to grade your
 > submissions, and any deviation will be penalized
 
@@ -61,7 +61,7 @@ mod tests {
 Write the same function but inverting the string in place
 
 ```rust
-fn invert(s: &mut String) {
+pub fn invert(s: &mut String) {
 }
 ```
 
@@ -69,9 +69,9 @@ Write associated tests.
 
 ### Exercise 2
 
-Write a function that converts an `i32` into a `String`, without using built-in
-facilities. Start by handling positive integers, then transition to all
-integers.
+Write a function that converts an `i32` into a `String`, **without using
+built-in facilities on string**. Start by handling positive integers, then
+transition to all integers.
 
 ```rust
 pub fn int_to_string(i: i32) -> String {
@@ -105,7 +105,7 @@ pub fn string_to_int_roman(i: String) -> i32 {
 }
 ```
 
-### Exercise 6
+### Exercise 5
 
 Write a stack type, that implements a stack of integers with a fixed max size
 (using an array), with associated `pop`, `push`, and `peek` operations.
@@ -136,31 +136,30 @@ impl Stack {
 
 Write associated tests
 
+### Exercise 6
+
+Make the stack in exercise 5 be of unbounded size.
+
+Write associated tests
+
 ### Exercise 7
 
-Make the stack in exercise 6 be of unbounded size.
-
-Write associated tests
-
-### Exercise 7b [bonus]
-
-Use traits and trait objects to hide the struct's contents.
+Take the stack of exercise 6, and put it in a module:
 
 ```rust
-pub trait Stack {
-    fn new() -> Self;
-    fn pop(&mut self) -> Option<i32>;
-    fn push(&mut self, value : i32) -> bool;
-    fn peek(&mut self) -> Option<i32>;
+```rust
+mod stack {
+    pub struct Stack {
+        ...
+    }
+
+    impl Stack {
+        ...
+    }
 }
-struct StackImplem { }
-
-impl Stack for StackImplem { }
-
-pub fn new_stack() -> impl Stack { }
 ```
 
-Write associated tests
+Adapt the code so that tests pass again.
 
 # Exercise 8
 

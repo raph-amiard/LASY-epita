@@ -39,7 +39,7 @@ fn main() {
 Write the body of the following `invert` function:
 
 ```rust
-fn invert(s: &String) -> String {
+pub fn invert(s: &String) -> String {
 }
 ```
 
@@ -50,6 +50,8 @@ Write the associated tests:
 ```rust
 #[cfg(test)]
 mod tests {
+    use super::*;
+
     #[test]
     fn ...() {
     }
@@ -86,7 +88,7 @@ Write a function that converts a `String` into an `i32`, with associated
 tests.
 
 ```rust
-fn string_to_int(s: String) -> i32 {
+pub fn string_to_int(s: String) -> i32 {
 }
 ```
 
@@ -138,7 +140,7 @@ Write associated tests
 
 ### Exercise 6
 
-Make the stack in exercise 5 be of unbounded size.
+Make the stack in exercise 5 be of unbounded size. Name it `Stack2`
 
 Write associated tests
 

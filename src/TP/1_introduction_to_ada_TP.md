@@ -68,7 +68,8 @@ Put it in a test main procedure. Write associated tests.
 
 ### Exercise 3 [arrays]
 
-Write a function that converts a `String` into an `Integer`.
+Write a function that converts a `String` into an `Integer`, without using the
+`'Value` attribute.
 
 Put it in a test main procedure. Write associated tests.
 
@@ -111,6 +112,6 @@ OR
 Modify the implementation of the previous package so that it uses an array that
 is automatically resized when the programmer goes beyond the initial max size.
 
-### Exercise 9 [generics]
+### BONUS Exercise 9 [generics]
 
 Make the previous package generic on the type of elements.

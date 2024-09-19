@@ -84,8 +84,8 @@ Write associated tests (same structure as previous exercize).
 
 ### Exercise 3
 
-Write a function that converts a `String` into an `i32`, with associated
-tests.
+Write a function that converts a `String` into an `i32`, **without using the
+built-in facilities on i32** with associated tests.
 
 ```rust
 pub fn string_to_int(s: String) -> i32 {

@@ -43,7 +43,7 @@ procedure Ex1 is
     E : Expr := (Kind => Bin_Op,
                  L => new Expr'(Kind => Literal, Val => 12),
                  R => new Expr'(Kind => Literal, Val => 15),
-                 Op => Add)
+                 Op => Add);
 begin
     Put_Line (Eval (E)'Image);
 end Ex1;
@@ -65,7 +65,7 @@ tests. Here are the potential function profiles that you can put in
    function E (Val : Integer) return Expr_Access;
    function Iff (Cond, Then_Expr, Else_Expr : Expr_Access) return Expr_Access;
 
-   E : Expr_Access := Iff (E(0) and E(1), E(2) * E (3); E(10) / E(5));
+   E : Expr_Access := Iff (E(0) and E(1), E(2) * E (3), E(10) / E(5));
 ```
 
 ### Exercise 2

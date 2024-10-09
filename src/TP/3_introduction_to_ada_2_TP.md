@@ -3,7 +3,8 @@ Exercises
 
 ### Exercise 1
 
-Create an alire project named `ex1`. Given the following package definition:
+Create an alire project named `ex1`. Add the following package definition in
+the `expr_eval.ads` file:
 
 ```ada
 package Expr_Eval is
@@ -46,6 +47,25 @@ procedure Ex1 is
 begin
     Put_Line (Eval (E)'Image);
 end Ex1;
+```
+
+#### NOTE
+
+You're free to create helper functions to help the creation of trees for the
+tests. Here are the potential function profiles that you can put in
+`expr_eval.ads`:
+
+```ada
+   function "+" (L, R : Expr_Access) return Expr_Access;
+   function "-" (L, R : Expr_Access) return Expr_Access;
+   function "/" (L, R : Expr_Access) return Expr_Access;
+   function "*" (L, R : Expr_Access) return Expr_Access;
+   function "or" (L, R : Expr_Access) return Expr_Access;
+   function "and" (L, R : Expr_Access) return Expr_Access;
+   function E (Val : Integer) return Expr_Access;
+   function Iff (Cond, Then_Expr, Else_Expr : Expr_Access) return Expr_Access;
+
+   E : Expr_Access := Iff (E(0) and E(1), E(2) * E (3); E(10) / E(5));
 ```
 
 ### Exercise 2
@@ -103,7 +123,8 @@ Extend your prefered version to handle two more expression kinds:
 - `Ref`. Ref allows referencing a name, introduced by a let, and the result
   of the evaluation will be the value of the binding.
 
-You can assume that the same variable name cannot be used twice (you can just raise an exception or even not handle this case).
+You can assume that the same variable name cannot be used twice (you can just
+raise an exception or even not handle this case).
 
 ```ada
     subtype Var_Name is String (1 .. 2);
@@ -126,7 +147,7 @@ You can assume that the same variable name cannot be used twice (you can just ra
 > maps are in `Ada.Containers.Hashed_Maps`
 >
 > You can use https://learn.adacore.com/courses/intro-to-ada/chapters/standard_library_containers.html#hashed-maps as an example of how to use hash maps
-> 
+>
 
 Write new tests in the test main for those two new constructs. Here is an
 example of a Let according to the above data representation:
@@ -143,9 +164,10 @@ example of a Let according to the above data representation:
 
 ### Exercise 4 [BONUS]
 
-Create an alire project named `ex4`. 
+Create an alire project named `ex4`.
 
-Copy over your version of exercise 3. Add a boolean literal. 
+Copy over your version of exercise 3. Add a boolean literal. Add the
+`Type_Check` function according to the profile below.
 
 ```ada
 package Expr is

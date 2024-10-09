@@ -37,15 +37,18 @@ Complete it with a body, in the file `expr_eval.adb`.
 Write a test for it in the file `ex1.adb`. Here is a sample test (write more than this one).
 
 ```ada
+with Ada.Text_IO; use Ada.Text_IO;
 with Expr_Eval; use Expr_Eval;
 
 procedure Ex1 is
+   pragma Assertion_Policy (Check);
+
     E : Expr := (Kind => Bin_Op,
                  L => new Expr'(Kind => Literal, Val => 12),
                  R => new Expr'(Kind => Literal, Val => 15),
                  Op => Add);
 begin
-    Put_Line (Eval (E)'Image);
+   pragma Assert (Eval (E) = 27);
 end Ex1;
 ```
 

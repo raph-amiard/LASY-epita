@@ -28,16 +28,17 @@ struct SortedList<...> {
 impl<...> SortedList<...> {
     pub fn add...
 }
+
+#[cfg(test)]
+mod tests {
+    use super::*;
+
+    #[test]
+    fn ...() {
+    }
+}
 ```
 
-# Exercise 2
-
-Take back your expression evaluator from last class
-
-Use lifetime annotations and references inside your evaluator instead of boxes.
-
-> [!IMPORTANT]  
-> Don't use this version for further questions!
 
 # Exercise 3
 
